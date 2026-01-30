@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Manuscript - ManuFormat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header with brand -->
+        <header class="header">
+            <a href="{{ url_for('index') }}" class="brand-link">
+                <h1 class="brand">ManuFormat</h1>
+            </a>
+        </header>
+
+        <!-- Upload section -->
+        <main class="upload-section">
+            <div class="upload-card">
+                <h2 class="section-headline">Upload Your Manuscript</h2>
+                
+                <p class="section-description">
+                    Select a DOCX file to get started
+                </p>
+
+                <!-- Upload form -->
+                <form id="uploadForm" action="{{ url_for('process') }}" method="POST" enctype="multipart/form-data" class="upload-form">
+                    <!-- File input (hidden, styled) -->
+                    <input 
+                        type="file" 
+                        id="fileInput" 
+                        name="file" 
+                        accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                        class="file-input"
+                        required
+                    >
+                    
+                    <!-- Custom upload button -->
+                    <label for="fileInput" class="btn btn-upload">
+                        <span id="uploadText">Choose DOCX File</span>
+                    </label>
+
+                    <!-- File name display -->
+                    <p id="fileName" class="file-name-display"></p>
+
+                    <!-- Submit button -->
+                    <button type="submit" class="btn btn-primary btn-large" id="submitBtn" disabled>
+                        Start Processing
+                    </button>
+                </form>
+
+                <!-- Back link -->
+                <a href="{{ url_for('index') }}" class="link-secondary">
+                    ← Back to home
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Handle file selection
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            const fileName = e.target.files[0]?.name;
+            const submitBtn = document.getElementById('submitBtn');
+            const fileNameDisplay = document.getElementById('fileName');
+            
+            if (fileName) {
+                fileNameDisplay.textContent = '✓ ' + fileName;
+                fileNameDisplay.style.color = '#ffffff';
+                submitBtn.disabled = false;
+            } else {
+                fileNameDisplay.textContent = '';
+                submitBtn.disabled = true;
+            }
+        });
+
+        // Form submission
+        document.getElementById('uploadForm').addEventListener('submit', function(e) {
+            const fileInput = document.getElementById('fileInput');
+            if (!fileInput.files.length) {
+                e.preventDefault();
+                alert('Please select a file');
+            }
+        });
+    </script>
+</body>
+</html>

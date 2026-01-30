@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ManuFormat - Format Research Papers & Manuscripts</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header with brand -->
+        <header class="header">
+            <h1 class="brand">ManuFormat</h1>
+        </header>
+
+        <!-- Hero section -->
+        <main class="hero-section">
+            <h2 class="hero-headline">Format research papers & manuscripts.</h2>
+            <h2 class="hero-subheadline">Journal-ready in seconds.</h2>
+            
+            <p class="hero-description">
+                Transform your manuscript into a professionally formatted academic document. 
+                ManuFormat handles formatting so you can focus on your research.
+            </p>
+
+            <!-- Primary CTA Button -->
+            <a href="{{ url_for('upload') }}" class="btn btn-primary btn-large">
+                Upload Manuscript
+            </a>
+
+            <!-- Additional info -->
+            <p class="footer-text">
+                Supports DOCX format • Free for all • No signup required
+            </p>
+        </main>
+    </div>
+</body>
+</html>

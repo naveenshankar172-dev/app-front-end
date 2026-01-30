@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download - ManuFormat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header with brand -->
+        <header class="header">
+            <a href="{{ url_for('index') }}" class="brand-link">
+                <h1 class="brand">ManuFormat</h1>
+            </a>
+        </header>
+
+        <!-- Success section -->
+        <main class="success-section">
+            <div class="success-icon">✓</div>
+            
+            <h2 class="success-headline">Your manuscript is ready!</h2>
+            
+            <p class="success-description">
+                Your document has been formatted according to academic standards 
+                and is ready for download.
+            </p>
+
+            <!-- Download button -->
+            <a href="{{ url_for('api_download_file') }}" class="btn btn-primary btn-large">
+                Download File
+            </a>
+
+            <!-- Alternative action -->
+            <a href="{{ url_for('upload') }}" class="btn btn-secondary">
+                Format Another File
+            </a>
+
+            <!-- Home link -->
+            <a href="{{ url_for('index') }}" class="link-secondary">
+                ← Back to home
+            </a>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processing - ManuFormat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header with brand -->
+        <header class="header">
+            <h1 class="brand">ManuFormat</h1>
+        </header>
+
+        <!-- Processing section -->
+        <main class="processing-section">
+            <!-- Spinner animation -->
+            <div class="spinner"></div>
+
+            <!-- Processing text -->
+            <h2 class="processing-headline">Formatting your document…</h2>
+            
+            <p class="processing-description">
+                Please wait while we process and format your manuscript
+            </p>
+
+            <!-- Progress indicator -->
+            <div class="progress-indicator">
+                <span class="progress-dot active"></span>
+                <span class="progress-dot"></span>
+                <span class="progress-dot"></span>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Auto-redirect to download page after 3 seconds
+        setTimeout(function() {
+            window.location.href = "{{ url_for('download') }}";
+        }, 3000);
+    </script>
+</body>
+</html>
